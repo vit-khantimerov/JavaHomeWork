@@ -61,8 +61,8 @@ public class Library {
         ivanov.takeBook(bookJava.getTitle(), bookArray[1].getTitle(), bookArray[2].getTitle(), bookArray[3].getTitle());
         readerArray[1].returnBook(bookJava.getTitle(), bookArray[1].getTitle(), bookArray[2].getTitle(), bookArray[3].getTitle());
 
-        readerArray[2].takeBook(bookJava, bookArray[1], bookArray[2], bookArray[3]);
-        readerArray[3].returnBook(bookArray[0], bookArray[1], bookArray[2], bookArray[3]);
+        readerArray[2].takeBook(bookArray);
+        readerArray[3].returnBook(bookJava, bookArray[1]);
 
         System.out.println("\nБиблиотека закрыта :)");
     }
