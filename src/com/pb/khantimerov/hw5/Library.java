@@ -57,11 +57,12 @@ public class Library {
         // ниже только демонстрируются перегруженные методы
         // можно было бы доделать выше "получение и возврат случайных книг"
 
+
         ivanov.takeBook(bookJava.getTitle(), bookArray[1].getTitle(), bookArray[2].getTitle(), bookArray[3].getTitle());
         readerArray[1].returnBook(bookJava.getTitle(), bookArray[1].getTitle(), bookArray[2].getTitle(), bookArray[3].getTitle());
 
         readerArray[2].takeBook(bookJava, bookArray[1], bookArray[2], bookArray[3]);
-        readerArray[3].takeBook(bookArray[0], bookArray[1], bookArray[2], bookArray[3]);
+        readerArray[3].returnBook(bookArray[0], bookArray[1], bookArray[2], bookArray[3]);
 
         System.out.println("\nБиблиотека закрыта :)");
     }
