@@ -20,3 +20,11 @@ public class Veterinarian {
         System.out.println("Территория обитания " + animal.getSpecies() + " - " + animal.getLocation() + ".");
     }
 }
+
+/*
+Зверь издает звук "р-р-р-р".
+Зверь ест.
+Зверь спит.
+Пища Зверь - трава.
+Территория обитания Зверь - суша.
+ */
