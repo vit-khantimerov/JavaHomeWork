@@ -8,11 +8,20 @@ package com.pb.khantimerov.hw6;
 public class Veterinarian {
     public static void main(String[] args) {
         Animal one = new Animal();
+        Cat catOne = new Cat();
+        catOne.setSpecies("кот");
+        catOne.setFood("мыши");
+        catOne.setLocation("дом");
 
         one.makeNoise();
         one.eat();
         one.sleep();
         treatAnimal(one);
+        //System.out.println("Длина шерсти у " + catOne.getSpecies() + " " + catOne.getFur());
+        System.out.println(catOne);
+        System.out.println("Хеш-код " + catOne.hashCode());
+        catOne.makeNoise();
+
     }
 
     public static void treatAnimal(Animal animal) {
