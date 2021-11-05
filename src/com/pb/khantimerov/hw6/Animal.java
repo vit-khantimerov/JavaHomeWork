@@ -1,21 +1,25 @@
 package com.pb.khantimerov.hw6;
 
+import java.util.Objects;
+
 /**
- * Класс Animal содержит переменные food, location и
- * методы makeNoise, eat, sleep.
- * Метод sleep, например, может выводить на консоль "Такое-то животное спит".
+ * + Класс Animal содержит переменные food, location и
+ * + методы makeNoise, eat, sleep.
+ * + Метод sleep, например, может выводить на консоль "Такое-то животное спит".
  */
 public class Animal {
-    private String species, food, location;
+    private String species, food, location, name;
 
-    public Animal(String species, String food, String location) {
+    public Animal(String name, String species, String food, String location) {
+        this.name = name;
         this.species = species;
         this.food = food;
         this.location = location;
     }
 
     public Animal() {
-        species = "Зверь";
+        name = "Альфа";
+        species = "зверь";
         food = "трава";
         location = "суша";
     }
@@ -32,6 +36,14 @@ public class Animal {
         return food;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setFood(String food) {
         this.food = food;
     }
@@ -45,7 +57,7 @@ public class Animal {
     }
 
     public void makeNoise() {
-        System.out.println(species + " издает звук \"р-р-р-р\".");
+        System.out.println(species + " " + name + " издает звук \"р-р-р-р\".");
     }
 
     public void eat() {
@@ -55,5 +67,4 @@ public class Animal {
     public void sleep() {
         System.out.println(species + " спит.");
     }
-
 }
