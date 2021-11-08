@@ -1,5 +1,4 @@
 
-// https://github.com/anatoliy-shkabara-pb/
 package com.pb.khantimerov.hw6;
 
 /**
