@@ -26,11 +26,11 @@ public class Veterinarian {
         name = "Дулитл";
     }
 
-    public static void treatAnimal(Animal animal) {
+    public void treatAnimal(Animal animal) {
         System.out.println("Пришел " + animal.getSpecies() + " " + animal.getName() + ". Его пища " + animal.getFood() +
                 ".\nТерритория обитания - " + animal.getLocation() + ".");
     }
-    public static void works (Veterinarian veterinarian) {
+    public void works (Veterinarian veterinarian) {
         System.out.println("Доктор " + veterinarian.getName() + " начинает прием.");
     }
 }
