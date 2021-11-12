@@ -1,3 +1,5 @@
+// https://github.com/anatoliy-shkabara-pb/
+
 package com.pb.khantimerov.hw1;
 
 public class HelloWorld {
