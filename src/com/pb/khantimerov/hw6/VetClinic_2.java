@@ -30,7 +30,7 @@ public class VetClinic_2 {
         if (obj_2 instanceof Veterinarian_2) {
             System.out.println("class of obj_x is " + obj_x.getClass());
         }
-            System.out.println("class of obj_0 is " + obj_0.getClass());
+        System.out.println("class of obj_0 is " + obj_0.getClass());
         System.out.println();
 
 
@@ -48,45 +48,41 @@ public class VetClinic_2 {
         }
 
         System.out.println(cat.getPicture());
-        System.out.println();
 
         Object [] anys = new Object[animals.length];
         int i;
         for (i = 0; i < animals.length; i++) {
             anys[i] = animals[i].getClass().newInstance();
-            System.out.println("class of anys[" + i + "] is " + anys[i].getClass());
+            System.out.println("class of anys[" + i + "] is " + anys[i].getClass().getSimpleName());
         }
+        System.out.println();
+
     }
+
+
 }
 /*
 vetClazz_2 = class com.pb.khantimerov.hw6.Veterinarian
 class of obj_0 is class com.pb.khantimerov.hw6.Veterinarian
-
 Пришел зверь Альфа. Его пища трава.
 Территория обитания - суша.
 зверь Альфа издает звук "р-р-р-р".
-
 Пришел кот Котяра. Его пища мыши.
 Территория обитания - дом.
 Кот Котяра мяяяууукает.
-
 Пришел пес Снуп. Его пища мясо.
 Территория обитания - двор.
 Собака Снуп лает.
-
 Пришел конь Скрипт. Его пища трава.
 Территория обитания - степь.
 Конь Скрипт ржет.
-
  /\_/\
 ( o.o )
  > ^ <
-
-class of anys[0] is class com.pb.khantimerov.hw6.Animal
-class of anys[1] is class com.pb.khantimerov.hw6.Cat
-class of anys[2] is class com.pb.khantimerov.hw6.Dog
-class of anys[3] is class com.pb.khantimerov.hw6.Horse
+class of anys[0] is Animal
+class of anys[1] is Cat
+class of anys[2] is Dog
+class of anys[3] is Horse
 
 Process finished with exit code 0
-
  */
