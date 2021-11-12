@@ -19,9 +19,9 @@ public class VetClinic {
         Constructor constr = vetClazz.getConstructor(new Class[] {String.class});
         Object obj = constr.newInstance("Айболит");
         if (obj instanceof Veterinarian) {
-            works((Veterinarian) obj);
+            ((Veterinarian) obj).works((Veterinarian) obj);
         } else {
-            works(vet);
+            vet.works(vet);
         }
         System.out.println();
 
@@ -33,7 +33,7 @@ public class VetClinic {
         Animal[] animals = new Animal[]{animal, cat, dog, horse};
 
         for (Animal a : animals) {
-            treatAnimal(a);
+            vet.treatAnimal(a);
             a.makeNoise();
             System.out.println();
         }
