@@ -1,4 +1,4 @@
-// https://github.com/anatoliy-shkabara-pb/
+// https://github.com/anatoliy-shkabara-pb?tab=repositories
 
 package com.pb.khantimerov.hw1;
 
