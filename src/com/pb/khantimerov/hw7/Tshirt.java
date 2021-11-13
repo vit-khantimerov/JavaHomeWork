@@ -8,19 +8,17 @@ public class Tshirt extends Clothes {
 
     public Tshirt() {
         super();
+        super.setType("T-Shirt");
         sleeve = "короткий";
         model = "футболка";
-        super.setType("T-Shirt");
     }
 
-    public Tshirt(String type, Size size, String color, int price, String sleeve, String type1) {
-        super(type, size, color, price);
+    public Tshirt(String model, Size size, String color, int price, String sleeve) {
+        super(size, color, price);
+        super.setType("T-Shirt");
         this.sleeve = sleeve;
-        this.model = type1;
-        super.setType("T-Shirt");
+        this.model = model;
     }
-
-
 
     public String getSleeve() {
         return sleeve;
@@ -41,14 +39,16 @@ public class Tshirt extends Clothes {
     @Override
     public void dressMan() {
         super.dressMan();
-        System.out.println(type + ", тип - " + model + ", цвет - " + color + ", размер " + size +
-                ", рукав " + sleeve + " см, цена - " + price + " грн.");
+        System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
+                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
+                "), рукав " + sleeve + " см, цена - " + price + " грн.");
     }
 
     @Override
     public void dressWoman() {
         super.dressWoman();
-        System.out.println(type + ", тип - " + model + ", цвет - " + color + ", размер " + size +
-                ", рукав " + sleeve + " см, цена - " + price + " грн.");
+        System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
+                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
+                "), рукав " + sleeve + " см, цена - " + price + " грн.");
     }
 }

@@ -9,16 +9,16 @@ public class Tie extends Clothes {
 
     public Tie() {
         super();
+        super.setType("галстук");
         design = "в полоску";
         length = 100;
-        super.setType("галстук");
     }
 
-    public Tie(String type, Size size, String color, int price, int length, String design) {
-        super(type, size, color, price);
+    public Tie(String design, Size size, String color, int price, int length) {
+        super(size, color, price);
+        super.setType("галстук");
         this.length = length;
         this.design = design;
-        super.setType("галстук");
     }
 
     public String getDesign() {
@@ -41,6 +41,7 @@ public class Tie extends Clothes {
     public void dressMan() {
         super.dressMan();
         System.out.println(type + ", рисунок - " + design + ", цвет - " + color + ", размер " + size +
-                ", длина " + length + " см, цена - " + price + " грн.");
+                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
+                "), длина " + length + " см, цена - " + price + " грн.");
     }
 }

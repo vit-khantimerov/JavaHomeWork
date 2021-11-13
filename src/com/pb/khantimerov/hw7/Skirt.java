@@ -9,16 +9,16 @@ public class Skirt extends Clothes {
 
     public Skirt() {
         super();
+        super.setType("юбка");
         fabric = "вельвет";
         length = 50;
-        super.setType("юбка");
     }
 
-    public Skirt(String type, Size size, String color, int price, int length, String fabric) {
-        super(type, size, color, price);
+    public Skirt(String fabric, Size size, String color, int price, int length) {
+        super(size, color, price);
+        super.setType("юбка");
         this.length = length;
         this.fabric = fabric;
-        super.setType("юбка");
     }
 
     public String getFabric() {
@@ -41,6 +41,7 @@ public class Skirt extends Clothes {
     public void dressWoman() {
         super.dressWoman();
         System.out.println(type + ", материал - " + fabric + ", цвет - " + color + ", размер " + size +
-                ", длина " + length + " см, цена - " + price + " грн.");
+                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
+                "), длина " + length + " см, цена - " + price + " грн.");
     }
 }
