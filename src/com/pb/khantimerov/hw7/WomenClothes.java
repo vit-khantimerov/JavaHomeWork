@@ -9,6 +9,6 @@ package com.pb.khantimerov.hw7;
 
 public interface WomenClothes {
     default void dressWoman () {
-        System.out.println("Информация о мужской одежде:");
+        System.out.println("Женская одежда: ");
     }
 }

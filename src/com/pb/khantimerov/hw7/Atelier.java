@@ -15,10 +15,27 @@ package com.pb.khantimerov.hw7;
 public class Atelier {
     public static void main(String[] args) {
         Size oneXS = Size.XS;
-        Pants firstPants = new Pants();
+        Pants pants1 = new Pants();
+        Skirt skirt1 = new Skirt();
+        Tie tie1 = new Tie();
+        Tshirt t1 = new Tshirt();
 
         System.out.println(oneXS.getEuroSize(oneXS));
         System.out.println(oneXS.getDescription(oneXS));
-        firstPants.dressMan();
+
+
+        Clothes[] clothes = new Clothes[] {pants1, skirt1, tie1, t1};
+
+        for (Clothes clothe : clothes) {
+            if (clothe instanceof Pants || clothe instanceof Tshirt) {
+                clothe.dressMan();
+            } else if (clothe instanceof Tie) {
+                clothe.dressMan();
+            } else if (clothe instanceof Skirt) {
+                clothe.dressWoman();
+            } else {
+                System.out.println("Неизвестны тип одежды");
+            }
+        }
     }
 }

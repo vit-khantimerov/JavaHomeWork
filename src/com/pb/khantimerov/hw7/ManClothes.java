@@ -9,6 +9,6 @@ package com.pb.khantimerov.hw7;
 
 public interface ManClothes {
     default void dressMan () {
-        System.out.println("Информация о мужской одежде:");
+        System.out.println("Мужская одежда: ");
     }
 }

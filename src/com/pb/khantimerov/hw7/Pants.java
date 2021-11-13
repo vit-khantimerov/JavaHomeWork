@@ -3,42 +3,51 @@ package com.pb.khantimerov.hw7;
  * реализует интерфейсы ManClothes и WomenClothes,
  */
 
-public class Pants extends Clothes {
+public class Pants extends Clothes{
     int length;
-    String type;
+    String model;
 
     public Pants() {
-        type = "брюки";
+        super();
+        model = "джинсы";
         length = 100;
+        super.setType("брюки");
     }
 
-    public String getType() {
-        return type;
+    public Pants(String type, Size size, String color, int price, int length, String model) {
+        super(type, size, color, price);
+        this.length = length;
+        this.model = model;
+        super.setType("брюки");
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getModel() {
+        return model;
     }
 
-    public int getToll() {
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getLength() {
         return length;
     }
 
-    public void setToll(int toll) {
-        this.length = toll;
+    public void setLength(int length) {
+        this.length = length;
     }
 
     @Override
     public void dressMan() {
         super.dressMan();
-        System.out.println("тип - " + type + ", цвет - " + color + ", размер " + size +
-                ", длина " + length + "см, цена - " + price + " грн.");
+        System.out.println(type + ", тип - " + model + ", цвет - " + color + ", размер " + size +
+                ", длина " + length + " см, цена - " + price + " грн.");
+    }
+
+    @Override
+    public void dressWoman() {
+        super.dressWoman();
+        System.out.println(type + ", тип - " + model + ", цвет - " + color + ", размер " + size +
+                ", длина " + length + " см, цена - " + price + " грн.");
     }
 }
-/*
-    Size size;
-    String color;
-    float price;
-    type = "брюки";
-    length = 100;
- */

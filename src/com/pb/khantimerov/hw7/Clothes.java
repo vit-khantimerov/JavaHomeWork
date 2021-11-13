@@ -5,20 +5,23 @@ package com.pb.khantimerov.hw7;
  */
 
 abstract class Clothes implements ManClothes, WomenClothes{
+    String type;
     Size size;
     String color;
     int price;
 
-    public Clothes(Size size, String color, int price) {
+    public Clothes(String type, Size size, String color, int price) {
+        this.type = type;
         this.size = size;
         this.color = color;
         this.price = price;
     }
 
     public Clothes() {
-        size = Size.L;
+        size = Size.XS;
         color = "черный";
         price = 100;
+        type = "одежда";
     }
 
     public Size getSize() {
@@ -43,5 +46,13 @@ abstract class Clothes implements ManClothes, WomenClothes{
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
