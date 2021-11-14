@@ -38,7 +38,7 @@ public class Tie extends Clothes implements ManClothes {
     }
 
     @Override
-    public void getInfoMan() {
+    public void getInfo() {
         System.out.println(type + ", рисунок - " + design + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");

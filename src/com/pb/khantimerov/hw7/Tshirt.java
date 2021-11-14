@@ -37,14 +37,7 @@ public class Tshirt extends Clothes implements ManClothes, WomenClothes {
     }
 
     @Override
-    public void getInfoMan() {
-        System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
-                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
-                "), рукав " + sleeve + " см, цена - " + price + " грн.");
-    }
-
-    @Override
-    public void getInfoWoman() {
+    public void getInfo() {
         System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), рукав " + sleeve + " см, цена - " + price + " грн.");

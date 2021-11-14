@@ -56,15 +56,9 @@ abstract class Clothes{
         this.type = type;
     }
 
-    public void getInfoMan() {
+    public void getInfo() {
         System.out.println(type + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), цена - " + price + " грн.");
-    }
-    public void getInfoWoman() {
-        System.out.println(type + ", цвет - " + color + ", размер " + size +
-                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
-                "), цена - " + price + " грн.");
-
     }
 }

@@ -38,7 +38,7 @@ public class Atelier {
         System.out.println("Мужская одежда:");
         for (Clothes clothe : clothes) {
             if (clothe instanceof ManClothes) {
-                clothe.getInfoMan();
+                clothe.getInfo();
             }
         }
         System.out.println();
@@ -48,7 +48,7 @@ public class Atelier {
         System.out.println("Женская одежда:");
         for (Clothes clothe : clothes) {
             if (clothe instanceof WomenClothes) {
-                clothe.getInfoWoman();
+                clothe.getInfo();
             }
         }
         System.out.println();

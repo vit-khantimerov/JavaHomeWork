@@ -38,14 +38,7 @@ public class Pants extends Clothes implements ManClothes, WomenClothes {
     }
 
     @Override
-    public void getInfoMan() {
-        System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
-                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
-                "), длина " + length + " см, цена - " + price + " грн.");
-    }
-
-    @Override
-    public void getInfoWoman() {
+    public void getInfo() {
         System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");

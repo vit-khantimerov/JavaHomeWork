@@ -38,7 +38,7 @@ public class Skirt extends Clothes  implements WomenClothes {
     }
 
     @Override
-    public void getInfoWoman() {
+    public void getInfo() {
         System.out.println(type + ", материал - " + fabric + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");
