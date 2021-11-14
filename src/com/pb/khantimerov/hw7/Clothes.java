@@ -4,7 +4,7 @@ package com.pb.khantimerov.hw7;
  * содержащий переменные размер (типа Size), стоимость, цвет.
  */
 
-abstract class Clothes implements ManClothes, WomenClothes {
+abstract class Clothes{
     String type;
     Size size;
     String color;
@@ -54,5 +54,17 @@ abstract class Clothes implements ManClothes, WomenClothes {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void getInfoMan() {
+        System.out.println(type + ", цвет - " + color + ", размер " + size +
+                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
+                "), цена - " + price + " грн.");
+    }
+    public void getInfoWoman() {
+        System.out.println(type + ", цвет - " + color + ", размер " + size +
+                " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
+                "), цена - " + price + " грн.");
+
     }
 }

@@ -3,7 +3,7 @@ package com.pb.khantimerov.hw7;
  * реализует интерфейсы ManClothes и WomenClothes,
  */
 
-public class Pants extends Clothes{
+public class Pants extends Clothes implements ManClothes, WomenClothes {
     int length;
     String model;
 
@@ -38,16 +38,14 @@ public class Pants extends Clothes{
     }
 
     @Override
-    public void dressMan() {
-        super.dressMan();
+    public void getInfoMan() {
         System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");
     }
 
     @Override
-    public void dressWoman() {
-        super.dressWoman();
+    public void getInfoWoman() {
         System.out.println(type + ", модель - " + model + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");

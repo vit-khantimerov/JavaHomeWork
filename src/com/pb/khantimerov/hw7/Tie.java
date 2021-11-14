@@ -3,7 +3,7 @@ package com.pb.khantimerov.hw7;
  * реализует интерфейс ManClothes.
  */
 
-public class Tie extends Clothes {
+public class Tie extends Clothes implements ManClothes {
     int length;
     String design;
 
@@ -38,8 +38,7 @@ public class Tie extends Clothes {
     }
 
     @Override
-    public void dressMan() {
-        super.dressMan();
+    public void getInfoMan() {
         System.out.println(type + ", рисунок - " + design + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");

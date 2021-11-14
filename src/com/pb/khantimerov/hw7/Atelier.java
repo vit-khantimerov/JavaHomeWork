@@ -37,8 +37,8 @@ public class Atelier {
     static void dressMan (Clothes[] clothes) {
         System.out.println("Мужская одежда:");
         for (Clothes clothe : clothes) {
-            if (clothe instanceof Pants || clothe instanceof Tshirt || clothe instanceof Tie) {
-                clothe.dressMan();
+            if (clothe instanceof ManClothes) {
+                clothe.getInfoMan();
             }
         }
         System.out.println();
@@ -47,8 +47,8 @@ public class Atelier {
     static void dressWoman (Clothes[] clothes) {
         System.out.println("Женская одежда:");
         for (Clothes clothe : clothes) {
-            if (clothe instanceof Skirt || clothe instanceof Tshirt) {
-                clothe.dressWoman();
+            if (clothe instanceof WomenClothes) {
+                clothe.getInfoWoman();
             }
         }
         System.out.println();
@@ -66,8 +66,10 @@ T-Shirt, модель - футболка, цвет - черный, размер 
 T-Shirt, модель - поло, цвет - оранжевый, размер XS (Евро № 34, взрослый размер), рукав длинный см, цена - 150 грн.
 
 Женская одежда:
+брюки, модель - джинсы, цвет - черный, размер XS (Евро № 34, взрослый размер), длина 100 см, цена - 100 грн.
 юбка, материал - вельвет, цвет - черный, размер XS (Евро № 34, взрослый размер), длина 50 см, цена - 100 грн.
 T-Shirt, модель - футболка, цвет - черный, размер XS (Евро № 34, взрослый размер), рукав короткий см, цена - 100 грн.
+брюки, модель - штаны, цвет - белый, размер XXS (Евро № 32, детский размер), длина 90 см, цена - 500 грн.
 юбка, материал - шелк, цвет - желтый, размер S (Евро № 36, взрослый размер), длина 70 см, цена - 200 грн.
 T-Shirt, модель - поло, цвет - оранжевый, размер XS (Евро № 34, взрослый размер), рукав длинный см, цена - 150 грн.
 

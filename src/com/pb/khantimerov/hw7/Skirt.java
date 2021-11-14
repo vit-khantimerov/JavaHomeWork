@@ -3,7 +3,7 @@ package com.pb.khantimerov.hw7;
  * реализует интерфейс WomenClothes,
  */
 
-public class Skirt extends Clothes {
+public class Skirt extends Clothes  implements WomenClothes {
     int length;
     String fabric;
 
@@ -38,8 +38,7 @@ public class Skirt extends Clothes {
     }
 
     @Override
-    public void dressWoman() {
-        super.dressWoman();
+    public void getInfoWoman() {
         System.out.println(type + ", материал - " + fabric + ", цвет - " + color + ", размер " + size +
                 " (Евро № " + size.getEuroSize() + ", " + size.getDescription(size) +
                 "), длина " + length + " см, цена - " + price + " грн.");
