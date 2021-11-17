@@ -21,7 +21,7 @@ public enum Size_2 {
     private String num, legend;
     private int nrEur;
 
-    Size_2(String num, int nr, String legend) {
+    Size_2(String num, int nrEur, String legend) {
         this.num = num;
         this.nrEur = nrEur;
         this.legend = legend;
