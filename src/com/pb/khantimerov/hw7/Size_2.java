@@ -19,21 +19,24 @@ public enum Size_2 {
     L  ("40", 40, "взрослый размер");
 
     private String num, legend;
-    private int nr;
+    private int nrEur;
 
     Size_2(String num, int nr, String legend) {
         this.num = num;
-        this.nr = nr;
+        this.nrEur = nrEur;
         this.legend = legend;
     }
 
-    String getEuroSize(){ return num;}
-
-    String getDescription() {
-            return "детский размер";
+    String getEuroSize()
+        {
+            return num;
         }
 
-    int getNr () {
-            return nr;
+    String getDescription() {
+            return legend;
+        }
+
+    int getNrEur() {
+            return nrEur;
         }
 }
