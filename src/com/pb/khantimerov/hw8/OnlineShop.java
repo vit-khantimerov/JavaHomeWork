@@ -1,46 +1,89 @@
 package com.pb.khantimerov.hw8;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
-/**
- * +Создать класс OnlineShop с методом main.
- * +В main создать один объект класса Auth.
- * +Предложить пользователю сперва зарегистрироваться (signUp) потом войти на сайт (signIn).
- * Обработать исключения методов signUp signIn с помощью блоков try-catch.
- */
 
 public class OnlineShop {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongLoginException, WrongPasswordException {
         Auth user = new Auth();
         Scanner scan = new Scanner(System.in);
-        String shopLogin, shopPassword, shopPassword2;
-
+        String regLogin = null, regPassword = null, regPassword2 = null,
+        userLogin = null, userPassword = null;
+        int countLogin = 5, countPassword = 5;
 
         System.out.println("Продите регистрацию в OnlineShop.\n\nВведите логин " +
-                "\n(от 5 до 20 символов, только латинские буквы и цифры).");
-        shopLogin = scan.nextLine();
+                "\n(от 5 до 20 символов, только латинские буквы и цифры)." +
+                "\nУ Вас есть 5 попыток.");
 
-        // дописать проверку на длину и допустимые символы {}
+    do {
+        regLogin = scan.nextLine();
+        if (Pattern.matches("[a-zA-Z0-9]{5,20}", regLogin)) {
+            userLogin = regLogin;
+            countLogin = 0;
+        } else {
+            countLogin--;
+            if (countLogin > 0) {
+                System.out.println("Неподходящий логин. Повторите попытку" +
+                        "\n(от 5 до 20 символов, только латинские буквы и цифры).");
+            }else{
+                System.out.println("Это была последняя попытка :( ");
+            }
+        }
+    } while (countLogin > 0);
 
-        System.out.println("Введите пароль \n(более 5 симолов, только латинские буквы, " +
-                "цифры и знак подчеркивания)");
-        shopPassword = scan.nextLine();
+        try {
+            if (userLogin != null) {
+                System.out.println("Введите пароль \n(более 5 симолов, только латинские буквы, " +
+                        "цифры и знак подчеркивания)");
 
-        // дописать проверку на длину и допустимые символы {}
+                do {
+                    regPassword = scan.nextLine();
+                    if (Pattern.matches("[a-zA-Z0-9_]{5,100}", regPassword)) {
+                        userPassword = regPassword;
+                        countPassword = 0;
+                    } else {
+                        countPassword--;
+                        if (countPassword > 0) {
+                            System.out.println("Неподходящий пароль. Повторите попытку.");
+                            //regPassword = scan.nextLine();
+                        } else {
+                            System.out.println("Это была последняя попытка :( " +
+                                    "\nПользователь не создан.");
+                        }
+                    }
+                } while (countPassword > 0);
+            }
+            if (userPassword != null) {
+                System.out.println("Повторите пароль.");
+                regPassword2 = scan.nextLine();
+                user.signUp(userLogin, regPassword, regPassword2);
+            }
 
-        System.out.println("Повторите пароль.");
-        shopPassword2 = scan.nextLine();
+        } catch (WrongLoginException e) {
+            e.printStackTrace();
+            System.out.println("Пароль не подтвержден.");
+            System.out.println("Пользователь не создан.");
+            user = null;
+        }
 
-        user.signUp(shopLogin, shopPassword, shopPassword2);
+       // Вход произвоится вне зависимости от того, создан юзер или нет.
 
         System.out.println("\nВход в OnlineShop.\nВведите логин...");
-        shopLogin = scan.nextLine();
+        userLogin = scan.nextLine();
 
         System.out.println("Введите пароль...");
-        shopPassword = scan.nextLine();
+        userPassword = scan.nextLine();
 
-        user.signIn(shopLogin, shopPassword);
-        System.out.println("User login - " + user.getUserLogin() + ", password - " + user.getUserPassword()
-                + "\nUsed login - " + shopLogin + ", password - " + shopPassword);
-    }
+        try {
+            user.signIn(userLogin, userPassword);
+        } catch (WrongPasswordException w) {
+            //System.out.println("User login - " + user.getUserLogin() + ", password - " + user.getUserPassword()
+            //        + "\nUsed login - " + userLogin + ", password - " + userPassword);
+            w.printStackTrace();
+        } catch (NullPointerException n) {
+            System.out.println("\nДоступ запрещен.\nНеверные логин и/или пароль.");
+            n.printStackTrace();
+        }
+        }
 }
