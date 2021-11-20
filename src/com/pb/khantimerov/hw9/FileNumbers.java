@@ -10,8 +10,10 @@ public class FileNumbers {
     public static void main(String[] args) throws Exception {
 
         int size = 100; // кол-во случаных чисел
-        String nrFilePath = "C:/Users/HP/IdeaProjects/JavaHomeWork/src/com/pb/khantimerov/hw9/numbers.txt";
-        String oddPath = "C:/Users/HP/IdeaProjects/JavaHomeWork/src/com/pb/khantimerov/hw9/odd-numbers.txt";
+        String nrFilePath = "C:/Users/HP/IdeaProjects/JavaHomeWork/" +
+                "src/com/pb/khantimerov/hw9/numbers.txt";
+        String oddPath = "C:/Users/HP/IdeaProjects/JavaHomeWork/" +
+                "src/com/pb/khantimerov/hw9/odd-numbers.txt";
 
         int[] array = new int[size]; // исходный массив
         Random random = new Random();
@@ -24,7 +26,6 @@ public class FileNumbers {
     }
 
     public static void createNumbersFile(int [] Array, String file) {
-        //int[] array = Array;
         printToFile_x10(Array, file);
     }
 
@@ -57,7 +58,7 @@ public class FileNumbers {
                 intArr[x] = Integer.parseInt(s);
                 if (intArr[x] % 2 == 0) {
                     intArr[x] = 0;
-            }
+                }
                 x++;
             }
         }
@@ -65,7 +66,6 @@ public class FileNumbers {
     }
 
     private static void printToFile_x10(int [] Array, String file) { // печать в файл по 10 чисел в строку
-        //int[] array = Array;
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file))) {
             for (int i = 0; i < Array.length; i++) {
             writer.write(String.valueOf(Array[i]));
