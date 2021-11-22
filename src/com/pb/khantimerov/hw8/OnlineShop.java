@@ -39,7 +39,7 @@ public class OnlineShop {
 
                 do {
                     regPassword = scan.nextLine();
-                    if (Pattern.matches("[a-zA-Z0-9_]{5,100}", regPassword)) {
+                    if (Pattern.matches("[a-zA-Z0-9_]{6,100}", regPassword)) {
                         userPassword = regPassword;
                         countPassword = 0;
                     } else {
