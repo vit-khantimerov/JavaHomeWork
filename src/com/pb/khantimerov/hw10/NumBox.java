@@ -1,13 +1,7 @@
-/**
- * Реализовать параметризованный класс NumBox, T - параметр типа.
- * Параметром должен быть любой класс-наследник
- *     Number (задать необходимое условие при объявлении класса NumBox).
- */
 package com.pb.khantimerov.hw10;
 
 public class NumBox <T extends Number>{
     private final T[] numbers;
-    private T[] number;
 
     @SuppressWarnings("unchecked")
     public NumBox(int size) {
@@ -15,12 +9,22 @@ public class NumBox <T extends Number>{
     }
 
     public void add(T number, int index) {
-        this.numbers[index] = number;
-        System.out.println(this.numbers[index].get());
+        try {
+            this.numbers[index] = number;
+            System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + this.numbers[index].get());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(number.getClass().getSimpleName() + "[" + index + "] не добален. Превышена длина массива.");
+        }
     }
 
     public T get(int index) {
-        return numbers[index];
+        try {
+            System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].get());
+            return numbers[index];
+        } catch (NullPointerException e) {
+            System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] " + "Не заолнен.");
+            return numbers[index];
+        }
     }
 
     public int length() {
@@ -30,50 +34,66 @@ public class NumBox <T extends Number>{
                 length++;
             }
         }
-        System.out.println(length);
+        System.out.println("Длина массива  = " + length);
         return length;
     }
 
-    public double average() {
-        double average = 0;
+    public Double average() {
+        Double average = null;
         int length = 0;
-        for (T t : numbers) {
-            if (t != null) {
-                length++;
-                average += t.get();
+        try {
+            for (T t : numbers) {
+                if (t != null) {
+                    if (average == null) {
+                        average = 0.0;
+                    }
+                    length++;
+                    average += t.get();
+                }
             }
+            System.out.println("Среднее = " + average / length);
+            average = average / length;
+        } catch (NullPointerException e) {
+            System.out.println("Среднее на посчитано.");
+            average = null;
         }
-        //average = (float)average / length;
-        System.out.println(average / length);
-
-        return average / length;
+        return average;
     }
 
-    public double sum() {
-        double sum = 0;
+    public Double sum() {
+        Double sum = null;
         for (T t: numbers) {
             if (t != null) {
+                if (sum == null) {
+                    sum = 0.0;
+                }
             sum += t.get();
             }
         }
-        System.out.println(sum);
-        return sum;
+        System.out.println("Сумма = " + sum);
+        return (Double) sum;
     }
 
     public T max() {
-        double max, max0;
+        Double max = null;
         int x = 0;
-        while (numbers[x].get() == null) {
+        //do
+        while (numbers[x] == null && x < numbers.length-1) {
             x++;
         }
-        max = numbers[x].get();
-
-        for (int i = x, numbersLength = numbers.length; i < numbersLength; i++) {
-            if (numbers[i] != null) {
-                max = numbers[i].get();
-            }
+        if (numbers[x] != null) {
+            max = numbers[x].get();
         }
-        System.out.println("max " + numbers[x].get());
+
+            for (int i = x; i < numbers.length; i++) {
+                if (numbers[i] != null) {
+                    if (numbers[i].get() > max) {
+                        max = numbers[i].get();
+                        x = i;
+                    }
+                }
+            }
+        System.out.println("Максимум = " + max);
         return numbers[x];
     }
 }
