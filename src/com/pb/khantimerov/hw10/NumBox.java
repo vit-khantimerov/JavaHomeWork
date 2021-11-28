@@ -22,8 +22,11 @@ public class NumBox <T extends java.lang.Number>{
          //   System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].doubleValue());
             return numbers[index];
         } catch (NullPointerException e) {
-            System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] " + "Не заолнен.");
-            return numbers[index];
+            System.out.println(numbers.getClass().getSimpleName() + "[" + index + "] " + "Не заполнен.");
+            return null;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(numbers.getClass().getSimpleName() + "[" + index + "] " + " Не существует (индекс за пределами массива).");
+            return null;
         }
     }
 
