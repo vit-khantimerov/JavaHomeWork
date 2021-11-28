@@ -1,3 +1,6 @@
+https://docs.google.com/presentation/d/14qThmacv7Gjzx1rZLiS3cBOoaScaxndN74P9qb3nOsc/edit#slide=id.p
+file:///C:/Users/HP/IdeaProjects/lesson-8/%D0%97%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5-8.pdf
+
 Задание 8
 Создать пакет hw8.
 Создать класс Auth, который содержит поля login и password и методы:
