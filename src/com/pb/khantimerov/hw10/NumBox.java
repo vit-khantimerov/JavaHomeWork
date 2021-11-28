@@ -19,7 +19,7 @@ public class NumBox <T extends java.lang.Number>{
 
     public T get(int index) {
         try {
-            System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].doubleValue());
+         //   System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].doubleValue());
             return numbers[index];
         } catch (NullPointerException e) {
             System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] " + "Не заолнен.");
@@ -71,7 +71,7 @@ public class NumBox <T extends java.lang.Number>{
             }
         }
         System.out.println("Сумма = " + sum);
-        return (Double) sum;
+        return sum;
     }
 
     public T max() {
