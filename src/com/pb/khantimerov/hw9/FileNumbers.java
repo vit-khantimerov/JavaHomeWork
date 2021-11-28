@@ -33,7 +33,7 @@ public class FileNumbers {
         Path path = Paths.get(file);
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
-            String lineFull = " ", line;
+            String lineFull = "", line;
             while((line = reader.readLine()) != null) {
                 lineFull = String.join(" ", lineFull, line);
             }
