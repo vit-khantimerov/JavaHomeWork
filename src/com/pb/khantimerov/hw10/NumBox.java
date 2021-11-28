@@ -11,7 +11,22 @@ public class NumBox <T extends java.lang.Number>{
     public void add(T number, int index) {
         try {
             this.numbers[index] = number;
-            System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + this.numbers[index].doubleValue());
+            String clazz = numbers[index].getClass().getSimpleName();
+            switch (clazz) {
+                case ("Float") : {
+                    float valueFloat = numbers[index].floatValue();
+                    System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + valueFloat);
+                }
+                break;
+                case ("Integer") : {
+                    int valueInt = numbers[index].intValue();
+                    System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + valueInt);
+                }
+                break;
+                default: Double valueDouble = null;
+            }
+
+//            System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + this.numbers[index].doubleValue());
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(number.getClass().getSimpleName() + "[" + index + "] не добален. Превышена длина массива.");
         }
@@ -19,13 +34,27 @@ public class NumBox <T extends java.lang.Number>{
 
     public T get(int index) {
         try {
-         //   System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].doubleValue());
-            return numbers[index];
+            String clazz = numbers[index].getClass().getSimpleName();
+            switch (clazz) {
+                case ("Float") : {
+                    float valueFloat = numbers[index].floatValue();
+                    System.out.println(clazz + "[" + index + "] = " + valueFloat);
+                }
+                break;
+                case ("Integer") : {
+                    int valueInt = numbers[index].intValue();
+                    System.out.println(clazz + "[" + index + "] = " + valueInt);
+                }
+                break;
+                default: Double valueDouble = null;
+            }
+        return numbers[index];
         } catch (NullPointerException e) {
             System.out.println(numbers.getClass().getSimpleName() + "[" + index + "] " + "Не заполнен.");
             return null;
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(numbers.getClass().getSimpleName() + "[" + index + "] " + " Не существует (индекс за пределами массива).");
+            System.out.println(numbers.getClass().getSimpleName() + "[" + index + "] " +
+                    " Не существует (индекс за пределами массива).");
             return null;
         }
     }
