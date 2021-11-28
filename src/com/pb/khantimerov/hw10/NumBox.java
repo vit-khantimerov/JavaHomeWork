@@ -1,17 +1,17 @@
 package com.pb.khantimerov.hw10;
 
-public class NumBox <T extends Number>{
+public class NumBox <T extends java.lang.Number>{
     private final T[] numbers;
 
     @SuppressWarnings("unchecked")
     public NumBox(int size) {
-        numbers = (T[]) new Number[size];
+        numbers = (T[]) new java.lang.Number[size];
     }
 
     public void add(T number, int index) {
         try {
             this.numbers[index] = number;
-            System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + this.numbers[index].get());
+            System.out.println("Добавлен " + number.getClass().getSimpleName() + "[" + index + "] = " + this.numbers[index].doubleValue());
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(number.getClass().getSimpleName() + "[" + index + "] не добален. Превышена длина массива.");
         }
@@ -19,7 +19,7 @@ public class NumBox <T extends Number>{
 
     public T get(int index) {
         try {
-            System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].get());
+            System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] = " + numbers[index].doubleValue());
             return numbers[index];
         } catch (NullPointerException e) {
             System.out.println(numbers.getClass().getSimpleName() + " [" + index + "] " + "Не заолнен.");
@@ -48,7 +48,7 @@ public class NumBox <T extends Number>{
                         average = 0.0;
                     }
                     length++;
-                    average += t.get();
+                    average += t.doubleValue();
                 }
             }
             System.out.println("Среднее = " + average / length);
@@ -67,7 +67,7 @@ public class NumBox <T extends Number>{
                 if (sum == null) {
                     sum = 0.0;
                 }
-            sum += t.get();
+            sum += t.doubleValue();
             }
         }
         System.out.println("Сумма = " + sum);
@@ -82,13 +82,13 @@ public class NumBox <T extends Number>{
             x++;
         }
         if (numbers[x] != null) {
-            max = numbers[x].get();
+            max = numbers[x].doubleValue();
         }
 
             for (int i = x; i < numbers.length; i++) {
                 if (numbers[i] != null) {
-                    if (numbers[i].get() > max) {
-                        max = numbers[i].get();
+                    if (numbers[i].doubleValue() > max) {
+                        max = numbers[i].doubleValue();
                         x = i;
                     }
                 }
