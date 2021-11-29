@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         int intSize = 4, floatSize = 5;
 
-        System.out.println("Создаем сисок Integer.\n");
+        System.out.println("Создаем список Integer.\n");
 
         NumBox<Integer> integers = new NumBox<>(intSize);
         integers.add( 100,0);
@@ -27,7 +27,7 @@ public class Main {
         integers.sum();
         integers.max();
 
-        System.out.println("\nСоздаем сисок Float.\n");
+        System.out.println("\nСоздаем список Float.\n");
 
         NumBox<Float> floats = new NumBox<>(floatSize);
         floats.add( 10.0f,0);
