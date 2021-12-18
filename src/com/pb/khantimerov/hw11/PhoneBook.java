@@ -133,9 +133,6 @@ public class PhoneBook {
         objectOutputStreamBook.writeObject(phoneBook);
         objectOutputStreamJSON.writeObject(json);
 
-//        List<Person> persons = (List<Person>) objectInputStream.readObject();
-//        System.out.println(persons);
-
         objectOutputStreamBook.close();
         objectOutputStreamJSON.close();
 
@@ -153,7 +150,9 @@ public class PhoneBook {
         objectInputStreamBook2.close();
 
 
-// Не получилось прочитать JSON-файл, ошибка jackson.core.JsonParseException: Unexpected character ('¬' (code 172)): expected a valid value
+// Не получилось прочитать JSON-файл,
+// ошибка jackson.core.JsonParseException: Unexpected character
+// ('¬' (code 172)): expected a valid value
 
 //        FileInputStream fileInputStreamJSON = new FileInputStream(jsonPath);
 //        ObjectInputStream objectInputStreamJSON = new ObjectInputStream(fileInputStreamJSON);
@@ -163,6 +162,15 @@ public class PhoneBook {
 //
 //        System.out.println("book JSON \n" + book_JSON);
 //        objectInputStream.close();
+
+// Такой вариант тоже не сработал :(
+//        mapper.writeValue(Paths.get("src/com/pb/khantimerov/hw11/phonebookJSON.json").toFile(), phoneBook);
+//        List<Abonent> book_JSON = Arrays.asList(mapper.readValue(Paths.get("src/com/pb/khantimerov/hw11/phonebookJSON.json").toFile(), Abonent[].class));
+//        System.out.println("book_JSON ================ " + book_JSON);
+//InvalidDefinitionException: Cannot construct instance of `com.pb.khantimerov.hw11.Abonent`
+// (no Creators, like default constructor, exist): cannot deserialize from Object value
+// (no delegate- or property-based Creator)
+
 
     } // *** END OF PSV MAIN ***
 
