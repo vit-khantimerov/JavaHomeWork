@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -85,6 +83,10 @@ public class PhoneBook {
 
         editAbonent(phoneBook,"Third", "Авдеев");
         editAbonent(phoneBook, "Сидоров", "Федоров");
+        searchName(phoneBook,"Third");
+
+        editAbonentPhone(phoneBook, "Федоров", Arrays.asList("77777", "88888888", "9999999", "1010101"));
+        editAbonentPhone(phoneBook,"Некто",Arrays.asList("01010101"));
 
         //editAbonent (List<Abonent> pBook, String name, String newName)
 
@@ -218,9 +220,9 @@ public class PhoneBook {
         int i = -1;
         for (Abonent p : pBook) {
             if (Objects.equals(p.getFio(), name)) {
-                i = pBook.indexOf(name);
                 p.setFio(newName);  //phoneBook.get(1).setFio("Чичваркин");
                 System.out.println("\nАбоненту " + name + " установлено ФИО  " + newName + "\n   ***** ");
+                i++;
             }
         }
         if (i == -1) {
@@ -228,4 +230,17 @@ public class PhoneBook {
         }
     }
 
+    public static void editAbonentPhone(List<Abonent> pBook, String name, List<String> newNum) {
+        int i = -1;
+        for (Abonent p : pBook) {
+            if (Objects.equals(p.getFio(), name)) {
+                p.setPhoneNrs(newNum);  //phoneBook.get(1).setFio("Чичваркин");
+                System.out.println("\nАбоненту " + name + " установлен(ы) номера  " + newNum + "\n   ***** ");
+                i++;
+            }
+        }
+        if (i == -1) {
+            System.out.println("Абонента " + name + " Нет в телефонной книге. Невозможно отредактировать.");
+        }
+    }
 }
