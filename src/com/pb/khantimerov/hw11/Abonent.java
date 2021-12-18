@@ -15,7 +15,7 @@ import java.util.List;
 адрес
 дата и время редактирования
  */
-public class Abonent {
+public class Abonent implements Serializable {
     String fio;
     LocalDate dateOfBirth;
     //String dateBirth; // - изменить тип
@@ -35,12 +35,11 @@ public class Abonent {
 
     @Override
     public String toString() {
-        return "\nДанные абонента (" +
-                "Ф.И.О.: " + fio +
-                ", Дата рождения: " + dateOfBirth +
-                ",\n Номера телефонов: " + phoneNrs +
-                ",\n Адрес: " + address +
-                ",\n Изменено: " + edited + ".";
+        return "\nАбонент " + fio +
+                ". Дата рождения: " + dateOfBirth +
+                ".\n Номера телефонов: " + phoneNrs +
+                ".\n Адрес: " + address +
+                ".\n Дата изменения: " + edited + ".";
     }
 
     public String getFio() {
@@ -49,6 +48,7 @@ public class Abonent {
 
     public void setFio(String fio) {
         this.fio = fio;
+        this.edited = LocalDateTime.now();
     }
 
     public LocalDate getDateOfBirth() {
@@ -57,6 +57,7 @@ public class Abonent {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        this.edited = LocalDateTime.now();
     }
 
     public List<String> getPhoneNrs() {
@@ -65,6 +66,7 @@ public class Abonent {
 
     public void setPhoneNrs(List<String> phoneNrs) {
         this.phoneNrs = phoneNrs;
+        this.edited = LocalDateTime.now();
     }
 
     public String getAddress() {
@@ -73,14 +75,15 @@ public class Abonent {
 
     public void setAddress(String address) {
         this.address = address;
+        this.edited = LocalDateTime.now();
     }
 
     public LocalDateTime getEdited() {
         return edited;
     }
 
-    public void setEdited(LocalDateTime edited) {
-        this.edited = edited;
-    }
+//    public void setEdited(LocalDateTime edited) {
+//        this.edited = edited;
+//    }
 
 }
