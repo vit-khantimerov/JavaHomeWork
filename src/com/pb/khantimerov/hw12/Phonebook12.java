@@ -10,6 +10,9 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Phonebook12 {
     public static void main(String[] args) throws Exception {
@@ -18,7 +21,7 @@ public class Phonebook12 {
 //            FileInputStream fileInputStreamBook = new FileInputStream(bookPath);
 //            ObjectInputStream objectInputStreamBook = new ObjectInputStream(fileInputStreamBook);
 
-        List<Abonent12> phoneBook12 = new ArrayList<>();
+        //List<Abonent12> phoneBook12 = new ArrayList<>();
 /*
       Пробовал вариант сначала грузить книгу из файла, а потом работать с ней,
    но не понраилось: после каждого запуска программы книга увеличивалась за счет
@@ -27,7 +30,7 @@ public class Phonebook12 {
    List<Abonent> phoneBook = (List<Abonent>) objectInputStreamBook.readObject();
  */
 
-        System.out.println("  *** СОЗДАЕМ ТЕЛЕФОННУЮ КНИГУ ***  ");
+        System.out.println("  *** Создаем абонентов ***  ");
 
         Abonent12 abonent1 = new Abonent12("Хантимеров",
                 LocalDate.of(1972, 3, 8),
@@ -50,16 +53,13 @@ public class Phonebook12 {
                 Arrays.asList("055555555", "099995555"),
                 "Киев", LocalDateTime.of(2021, 12, 18, 20, 15));
 
-        addAbonent(phoneBook12,abonent1);
-        addAbonent(phoneBook12,abonent2);
-        addAbonent(phoneBook12,abonent3);
-        addAbonent(phoneBook12,abonent4);
-        addAbonent(phoneBook12,abonent5);
 
-
-        //System.out.println("  *** ЗАГРУЖЕНА ТЕЛЕФОННАЯ КНИГА ***  ");
+        List<Abonent12> phoneBook12 = Stream.of(abonent1, abonent2, abonent3, abonent4, abonent5)
+                .collect(Collectors.toList());
+        System.out.println("Составляем телефонную книгу: " + phoneBook12);
         System.out.println("\nКоличество абонентов " + phoneBook12.size() + ".");
-        phoneBookPrint(phoneBook12);
+
+//        phoneBookPrint(phoneBook12);
 
         addAbonent(phoneBook12,abonent5);
         delAbonent(phoneBook12,phoneBook12.get(4));
@@ -79,6 +79,33 @@ public class Phonebook12 {
         searchNumber(phoneBook12, "0922225855");
         searchNumber(phoneBook12, "0552325325");
 
+
+        System.out.println("\nПоиск по фио");
+        String nameForSearch = "Хантимеров";
+        phoneBook12.stream()
+                .map(Abonent12::getFio)
+                .filter(s -> { //int i = 0;
+                                if(s.contains(nameForSearch)) {
+                                    System.out.println("Найден абонент " + nameForSearch);
+                                    //i++;
+                                } //else {i--;}
+//                                if (i < 0) {
+//                                    System.out.println("Абонент " + nameForSearch + " не найден.");
+//                                }
+                                    return true;})
+                .forEach(s -> {});
+
+        System.out.println("\nПоиск по номеру");
+        String nrForSearch = "0552325325";
+        phoneBook12.stream()
+                .map(Abonent12::getPhoneNrs)
+                .filter(s -> s.contains(nrForSearch))
+                .forEach(System.out::println);
+
+        System.out.println("----------------------------------------");
+
+
+
         System.out.println();
 
         editAbonent(phoneBook12,"Third", "Авдеев");
@@ -87,6 +114,12 @@ public class Phonebook12 {
 
         editAbonentPhone(phoneBook12, "Федоров", Arrays.asList("77777", "88888888", "9999999", "1010101"));
         editAbonentPhone(phoneBook12,"Некто",Arrays.asList("01010101"));
+
+
+        System.out.println("\n***   Отредактированная телефонная книга   ***");
+        phoneBook12.stream()
+                .forEach(System.out::println);
+
 
         //editAbonent (List<Abonent> pBook, String name, String newName)
 
@@ -109,34 +142,13 @@ public class Phonebook12 {
         // pretty printing (json с отступами)
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-//            // работа с полями типа LocalDate
-//            SimpleModule module = new SimpleModule();
-//            module.addSerializer(LocalDate.class, new LocalDateSerializer());
-//            module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-//            mapper.registerModule(module);
-//
-//            // работа с полями типа LocalDateTime
-//            SimpleModule moduleDT = new SimpleModule();
-//            moduleDT.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());
-//            moduleDT.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
-//            mapper.registerModule(moduleDT);
-
-        //String json = mapper.writeValueAsString(phoneBook12);
-        //System.out.println("\n\nТелефонная книга в формате JSON \n" + json);
 
         FileOutputStream outputStreamBook = new FileOutputStream(bookPath);
-        //FileOutputStream outputStreamJSON = new FileOutputStream(jsonPath);
         ObjectOutputStream objectOutputStreamBook = new ObjectOutputStream(outputStreamBook);
-        //ObjectOutputStream objectOutputStreamJSON = new ObjectOutputStream(outputStreamJSON);
-
         // сохраняем в файл
         objectOutputStreamBook.writeObject(phoneBook12);
-        //objectOutputStreamJSON.writeObject(json);
-
         objectOutputStreamBook.close();
-        //objectOutputStreamJSON.close();
 
-//
 
         File bookPath2 = Paths.get("src/com/pb/khantimerov/hw12/phonebook.data").toFile();
 
@@ -152,6 +164,12 @@ public class Phonebook12 {
 
 
     } // *** END OF PSV MAIN ***
+
+//    private static boolean searchName12(List<Abonent12> book12, String name12) {
+//        if (name12 == book12.get().getFio())
+//        return isFound;
+//    }
+
 
     public static void addAbonent(List<Abonent12> pBook, Abonent12 ab) {
         pBook.add(ab);
@@ -195,13 +213,13 @@ public class Phonebook12 {
         }
     }
 
-    public static void phoneBookPrint(List<Abonent12> pBook) {
-        System.out.println("\n*** Полные данные абонентов ***");
-        for (Abonent12 p : pBook) {
-            System.out.println(p);
-        }
-        System.out.println("\n   *** ***** ***");
-    }
+//    public static void phoneBookPrint(List<Abonent12> pBook) {
+//        System.out.println("\n*** Полные данные абонентов ***");
+//        for (Abonent12 p : pBook) {
+//            System.out.println(p);
+//        }
+//        System.out.println("\n   *** ***** ***");
+//    }
 
     public static void editAbonent(List<Abonent12> pBook, String name, String newName) {
         int i = -1;
@@ -213,7 +231,7 @@ public class Phonebook12 {
             }
         }
         if (i == -1) {
-            System.out.println("Абонента " + name + " Нет в телефонной книге. Невозможно отредактировать.");
+            System.out.println("Абонента " + name + " нет в телефонной книге. Невозможно отредактировать.");
         }
     }
 
@@ -227,7 +245,7 @@ public class Phonebook12 {
             }
         }
         if (i == -1) {
-            System.out.println("Абонента " + name + " Нет в телефонной книге. Невозможно отредактировать.");
+            System.out.println("Абонента " + name + " нет в телефонной книге. Невозможно отредактировать.");
         }
     }
 }
