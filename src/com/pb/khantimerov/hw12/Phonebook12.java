@@ -2,15 +2,13 @@ package com.pb.khantimerov.hw12;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.pb.khantimerov.hw11.*;
 
 import java.io.*;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -79,32 +77,40 @@ public class Phonebook12 {
         searchNumber(phoneBook12, "0922225855");
         searchNumber(phoneBook12, "0552325325");
 
-
-        System.out.println("\nПоиск по фио");
+        System.out.println("\n----------------------------------------");
+        System.out.println("Поиск по фио");
         String nameForSearch = "Хантимеров";
+        AtomicInteger i = new AtomicInteger(phoneBook12.size());
         phoneBook12.stream()
                 .map(Abonent12::getFio)
-                .filter(s -> { //int i = 0;
-                                if(s.contains(nameForSearch)) {
+                .filter(s -> { if(s.contains(nameForSearch)) {
                                     System.out.println("Найден абонент " + nameForSearch);
-                                    //i++;
-                                } //else {i--;}
-//                                if (i < 0) {
-//                                    System.out.println("Абонент " + nameForSearch + " не найден.");
-//                                }
+                                } else {
+                                    i.getAndDecrement();
+                                }
+                                if (i.get() == 0) {
+                                    System.out.println("Абонент " + nameForSearch + " не найден.");
+                                }
                                     return true;})
                 .forEach(s -> {});
 
         System.out.println("\nПоиск по номеру");
         String nrForSearch = "0552325325";
+        AtomicInteger j = new AtomicInteger(phoneBook12.size());
         phoneBook12.stream()
                 .map(Abonent12::getPhoneNrs)
-                .filter(s -> s.contains(nrForSearch))
+                .filter(s -> s.contains(nrForSearch)) //{
+                    //System.out.println("Номер " + nrForSearch + " найден:");
+//                } else {
+//                    j.getAndDecrement();
+//                    System.out.println(j.get());}
+//                    if (j.get() == 0) {
+//                        System.out.println("Номер " + nameForSearch + " не найден.");
+//                    }
+//                    return true;})
                 .forEach(System.out::println);
 
         System.out.println("----------------------------------------");
-
-
 
         System.out.println();
 
