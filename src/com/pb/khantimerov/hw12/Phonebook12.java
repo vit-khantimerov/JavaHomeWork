@@ -59,20 +59,24 @@ public class Phonebook12 {
         System.out.println();
 
         System.out.println("\n----------------------------------------");
-        System.out.println("Поиск по ФИО");
+        System.out.println("*** Поиск по ФИО ***");
         searchName(phoneBook12,"Хантимеров");
         searchName(phoneBook12,"Энгельс");
+        searchName(phoneBook12,"фонов");
 
-        System.out.println("\nПоиск по номеру");
+
+        System.out.println("\n*** Поиск по номеру ***");
         searchNumber(phoneBook12, "325325"); // найден, ответ - ФИО + все номера телефонов
         searchNumber(phoneBook12,"1597533"); // не наден, ответ - пустая строка
 
-        System.out.println("\nПоиск по всем полям"); //кроме даты редактирования
+        System.out.println("\n*** Поиск по всем полям ***"); //кроме даты редактирования
         searchAny(phoneBook12, "ов");
         System.out.println();
         searchAny(phoneBook12, "08");
         System.out.println();
         searchAny(phoneBook12, ".08.");
+        System.out.println();
+        searchAny(phoneBook12, "-08-");
         System.out.println();
         searchAny(phoneBook12,"067");
 
@@ -132,34 +136,38 @@ public class Phonebook12 {
         System.out.println("\nАбонент " + ab.getFio() + " добавлен.");
     }
 
+
     public static void delAbonent(List<Abonent12> pBook, Abonent12 ab) {
         pBook.remove(ab);
         System.out.println("\nАбонент " + ab.getFio() + " удален.");
     }
 
+
     public static void searchName(List<Abonent12> pBook, String name) {
+        System.out.println("\nИщем << " + name + " >>");
         AtomicInteger i = new AtomicInteger(pBook.size());
         pBook.stream()
                 .map(Abonent12::getFio)
                 .filter(s -> { if(s.contains(name)) {
-                    System.out.println("Абонент " + name + " найден.");
+                    System.out.println("Абонент \"" + name + "\" найден.");
                     } else {
                     i.getAndDecrement();
                     }
                     if (i.get() == 0) {
-                        System.out.println("Абонент " + name + " не найден.");
+                        System.out.println("Абонент \"" + name + "\" не найден.");
                     }
                     return s.contains(name);})
                 .forEach(s -> {});
     }
 
     public static void searchNumber(List<Abonent12> pBook, String nr) {
+        System.out.println("\nИщем << " + nr + " >>");
         pBook.stream()
                 .map(abonent12 -> {
                     List<String> num = abonent12.getPhoneNrs();
                     String fio = abonent12.getFio();
-                    String rez = new StringBuilder().append("Абонент ")
-                            .append(fio).append(" номер(а): ").append(num).toString();
+                    String rez = new StringBuilder().append("Абонент \"")
+                            .append(fio).append("\" номер(а): ").append(num).toString();
                     return rez;
                 })
                 .filter(s -> s.contains(nr))
@@ -167,24 +175,19 @@ public class Phonebook12 {
     }
 
     public static void searchAny(List<Abonent12> pBook, String any) {
+        System.out.println("\nИщем << " + any + " >>");
         pBook.stream()
                 .map(abonent12 -> {
-                    List<String> num = abonent12.getPhoneNrs();
-                    String fio = abonent12.getFio();
-                    LocalDate date = abonent12.dateOfBirth;
-                    String adr = abonent12.getAddress();
-                    String rez = new StringBuilder().append("Данные поиска: << ").append(any)
-                            .append(" >>. Результат >>> Абонент ").append(fio)
-                            .append(", номер(а): ").append(num)
-                            .append(", адрес - ").append(adr)
-                            .append(", дата рождения - ").append(date).toString();
+                    String rez = new StringBuilder()
+                        .append(abonent12.getFio()).append(", ")
+                        .append(abonent12.getPhoneNrs()).append(", ")
+                        .append(abonent12.getAddress()).append(", ")
+                        .append(abonent12.dateOfBirth).toString();
                     return rez;
                 })
                 .filter(s -> s.contains(any))
                 .forEach(System.out::println);
     }
-
-
 
 
     public static void editAbonent(List<Abonent12> pBook, String name, String newName) {
