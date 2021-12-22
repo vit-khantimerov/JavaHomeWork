@@ -1,27 +1,15 @@
 package com.pb.khantimerov.hw12;
 
-import com.pb.khantimerov.hw3.Array;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
-/*
-ФИО
-дата рождения
-телефоны (количество не ограничено)
-адрес
-дата и время редактирования
- */
 public class Abonent12 implements Serializable {
     String fio;
     LocalDate dateOfBirth;
-    //String dateBirth; // - изменить тип
     List<String> phoneNrs;
     String address;
-    //String edited; // - изменить тип
     LocalDateTime edited;
 
     public Abonent12(String fio, LocalDate dateOfBirth, List<String> phoneNrs,
@@ -81,9 +69,4 @@ public class Abonent12 implements Serializable {
     public LocalDateTime getEdited() {
         return edited;
     }
-
-//    public void setEdited(LocalDateTime edited) {
-//        this.edited = edited;
-//    }
-
 }
