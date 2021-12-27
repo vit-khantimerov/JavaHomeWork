@@ -9,10 +9,12 @@ import java.util.concurrent.TimeUnit;
 public class NewYearPresents {
     static volatile int childrenGifts = 0; // общее кол-во полученных подарков
     static volatile int personsGifts = 0; // общее кол-во подаренных подарков
+//    static volatile List<Children> Childrennn = new ArrayList<>();
 
     static class Children implements Runnable {
         private final List<String> buffer;
         private final String name;
+        private final List<String> receivedGifts = new ArrayList<>();
 
         public Children(List<String> buffer, String name) {
             this.buffer = buffer;
@@ -33,6 +35,7 @@ public class NewYearPresents {
                         sack.remove(0);
                         System.out.println("-- " + name + " взял(а) " + gift + " из мешка :)");
                         p = 1;
+                        receivedGifts.add(gift);
                     }
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println(":( " + child + " :( Мешок пустой, нет подарков.");
@@ -51,7 +54,8 @@ public class NewYearPresents {
                     e.printStackTrace(); }
                 i++;
             }
-            System.out.println("\n***** " + name + " получил(а) " + p + " подарков *****\n");
+            System.out.println("\n***** " + name + " ушел(а), он(а) получил(а) подарки: \n" + receivedGifts +
+                    ", всего " + p + " штук(и) *****\n");
             childrenGifts += p;
             }
     }
@@ -166,5 +170,7 @@ public class NewYearPresents {
         } else {
             System.out.println("В мешке ничего не осталось :(");
         }
+
+
     }
 }
