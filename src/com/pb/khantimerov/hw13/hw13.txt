@@ -10,3 +10,27 @@
     данные и место освободится.
 В качестве буфера можно выбрать, например Queue или List, но реализация не должна быть
     потокобезопасная (например LinkedList).
+
+
+
+
+//    public synchronized void toSack_ (List<String> sack, String gift, Person person) {
+//        int s = sack.size();
+//        if (s < 5) {
+//            sack.add(gift);
+//            System.out.println(person + " положил " + gift + " в мешок :)");
+//        } else {
+//            System.out.println("Мешок полон. Нельзя положить подарок :(");
+//        }
+//    }
+//
+//    public synchronized void fromSack_ (List<String> sack, Person person) {
+//        int s = sack.size();
+//        String gift = sack.get(0);
+//        if (s > 0) {
+//            sack.remove(0);
+//            System.out.println(person + " взял " + gift + " из мешка :)");
+//        } else {
+//            System.out.println("Мешок пустой, нет подарков :(");
+//        }
+//    }

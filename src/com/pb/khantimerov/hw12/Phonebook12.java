@@ -179,7 +179,7 @@ public class Phonebook12 {
         pBook.stream()
                 .map(abonent12 -> {
                     String rez = new StringBuilder()
-                        .append(abonent12.getFio()).append(", ")
+                        .append(abonent12.getFio()).append(", z")
                         .append(abonent12.getPhoneNrs()).append(", ")
                         .append(abonent12.getAddress()).append(", ")
                         .append(abonent12.dateOfBirth).toString();
