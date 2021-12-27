@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class NewYearPresents {
     static volatile int childrenGifts = 0; // общее кол-во полученных подарков
@@ -46,8 +44,8 @@ public class NewYearPresents {
             int i = 0, p = 0;
             while (i < 5) { // ребенок может проверить и получить подарок не больше 5 раз
                 try {
-                    int seconds = new Random().nextInt(5);
-                    Thread.sleep(seconds * 1000);
+                    int seconds = new Random().nextInt(5000);
+                    Thread.sleep(seconds);
                     p += fromSack(buffer, name);
                 } catch (InterruptedException e) {
                     e.printStackTrace(); }
@@ -83,9 +81,9 @@ public class NewYearPresents {
             int i = 0, p = 0;
             String threadName = Thread.currentThread().getName();
             while (i < 10) {
-                int seconds = new Random().nextInt(3);
+                int seconds = new Random().nextInt(3000);
                 try {
-                    Thread.sleep(seconds * 1000);
+                    Thread.sleep(seconds);
                     p += toSack(buffer, present, threadName);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -106,8 +104,8 @@ public class NewYearPresents {
         Thread ded = new Thread(new Person(sack, "конфеты"));
         Thread snegurochka = new Thread(new Person( sack, "печенье"));
         Thread santa = new Thread(new Person(sack, "тортик"));
-        Thread baba = new Thread(new Person(sack, "жачку"));
-        Thread niko = new Thread(new Person(sack, "шоколадку"));
+        Thread baba = new Thread(new Person(sack, "жвачка"));
+        Thread niko = new Thread(new Person(sack, "шоколадка"));
         ded.setName("Дед Мороз");
         snegurochka.setName("Снегрочка");
         santa.setName("Санта Клаус");
