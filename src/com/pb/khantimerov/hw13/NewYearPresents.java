@@ -76,7 +76,7 @@ public class NewYearPresents {
                 p = 1;
                 System.out.println("++ " + person + " положил(а) " + gift + " в мешок :)");
             } else {
-                System.out.println("Мешок полон. Нельзя положить новый подарок :(");
+                System.out.println(person + ":( Мешок полон. Нельзя положить новый подарок :(");
             }
             return p;
         }
@@ -94,7 +94,7 @@ public class NewYearPresents {
                 }
                 i++;
             }
-            System.out.println("\n===== " + threadName + " положил(а) " + p + " подарков =====\n");
+            System.out.println("\n===== " + threadName + " всего положил(а) " + p + " подарков и ушел(а) =====\n");
             personsGifts += p;
             //System.out.println(threadName + " Что в мешке? >> " + buffer);
 
