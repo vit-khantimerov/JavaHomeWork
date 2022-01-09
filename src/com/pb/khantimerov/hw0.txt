@@ -5,7 +5,7 @@ https://github.com/vit-khantimerov/JavaHomeWork/tree/master/src/com/pb/khantimer
 
 А.Шкабара ПБ на Github
 https://github.com/anatoliy-shkabara-pb?tab=repositories
-https://github.com/anatoliy-shkabara-pb/lesson-2
+
 
 курс Java 2021 онлайн - https://classroom.google.com/c/NDAwNjE5OTMwNjc3
 Список заданий - https://classroom.google.com/a/turned-in/NDAwNjE5OTMwNjc3
