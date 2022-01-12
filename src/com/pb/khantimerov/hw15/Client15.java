@@ -20,7 +20,7 @@ public class Client15 {
     static volatile String mensaje = "";
     static volatile java.awt.TextArea textArea = new java.awt.TextArea();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Frame frame = new Frame();
         java.awt.TextArea textArea = new java.awt.TextArea();
 //        Label label = new Label("Employee id:");
@@ -55,8 +55,8 @@ public class Client15 {
         // обработка нажатия кнопки
         button.addActionListener(event -> {
             System.out.println("Button pressed, id: " + textField.getText());
-            mensaje = textField.getText();
-            textArea.setText(textArea.getText()+"\n"+mensaje);
+            mensaje = mensaje + "\n" + textField.getText();
+            textArea.setText(mensaje);
             }
         );
 
@@ -79,6 +79,7 @@ public class Client15 {
 
         while (true) {
             textArea.setText(mensaje);
+            Thread.sleep(10);
         }
     }
 

@@ -3,6 +3,8 @@ git config --global http.proxy http://ldap:password@proxy.pbank.com.ua:8080
 ДЗ на Gihub
 https://github.com/vit-khantimerov/JavaHomeWork/tree/master/src/com/pb/khantimerov
 
+https://github.com/vit-khantimerov/JS-PB
+
 А.Шкабара ПБ на Github
 https://github.com/anatoliy-shkabara-pb?tab=repositories
 
