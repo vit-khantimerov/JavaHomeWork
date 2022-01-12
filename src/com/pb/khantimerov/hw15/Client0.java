@@ -1,13 +1,5 @@
 package com.pb.khantimerov.hw15;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,56 +8,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class Client15 {
-    static volatile String mensaje = "";
-    static volatile java.awt.TextArea textArea = new java.awt.TextArea();
+public class Client0 {
 
     public static void main(String[] args) {
-        Frame frame = new Frame();
-        java.awt.TextArea textArea = new java.awt.TextArea();
-//        Label label = new Label("Employee id:");
-        Button button = new Button("Submit");
-        java.awt.TextField textField = new java.awt.TextField();
-
-        textArea.setBounds(20,50,460,300);
-//        label.setBounds(20, 170, 80, 30);
-        textField.setBounds(20, 400, 350, 30);
-        button.setBounds(400, 400, 80, 30);
-
-        frame.add(textArea);
-        frame.add(button);
-//        frame.add(label);
-        frame.add(textField);
-
-        frame.setSize(500,500);
-        frame.setTitle("Chat...");
-
-        // нужно убрать менеджер компоновки который установлен по умолчанию
-        // иначе будет использован BorderLayout и компоненты будут расположены не так как задумано
-        frame.setLayout(null);
-
-        // для работы кнопки закрытие окна "крестик"
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                frame.dispose();
-            }
-        });
-
-        // обработка нажатия кнопки
-        button.addActionListener(event -> {
-            System.out.println("Button pressed, id: " + textField.getText());
-            mensaje = textField.getText();
-            textArea.setText(textArea.getText()+"\n"+mensaje);
-            }
-        );
-
-        frame.setVisible(true);
-
-
-        // подключение к серверу
         try {
-            System.out.println("Client 15 starting...");
+            System.out.println("Client 1 starting...");
             Socket s = new Socket("127.0.0.1",7777);
             Thread threadIn = new Thread(new SocketInputThread(s));// данные от сервера
             Thread threadOut = new Thread(new SocketOutputThread(s));// ввод с клавиатуры
@@ -75,10 +22,6 @@ public class Client15 {
             System.out.println("UnknownHostException in Main");
         } catch (IOException ex) {
             System.out.println("IOException in Main");
-        }
-
-        while (true) {
-            textArea.setText(mensaje);
         }
     }
 
@@ -101,8 +44,6 @@ public class Client15 {
                     if(in.hasNext()){
                         inMessage = in.nextLine();
                         System.out.println(inMessage);
-                        mensaje = mensaje + "\n" + inMessage;
-                        textArea.setText(mensaje);
                     }
                 }
             } catch (IOException ex) {
@@ -129,8 +70,6 @@ public class Client15 {
                 while (true) {
                     outMessage = buffer.readLine();
                     out.println(outMessage);
-//                    mensaje = outMessage;
-//                    textArea.setText(mensaje + "\n" + outMessage);
                     out.flush();
 
                     if (outMessage.equalsIgnoreCase("exit chat")) {
@@ -142,10 +81,46 @@ public class Client15 {
             }
         }
     }
-
 }
 
-/* Сообщения у клиента 15.  Пришел и ушел первым, поэтому не видел выход остальных.
+/* Сообщения у клиента 1.  Пришел и ушел первым, поэтому не видел выход остальных.
 
+Client 1 starting...
+2022-01-08T23:43:31.067.
+В чате новый клиент участник - № 1
+2022-01-08T23:43:40.706.
+В чате новый клиент участник - № 2
+2022-01-08T23:43:52.430.
+В чате новый клиент участник - № 3
+2022-01-08T23:43:59.523.
+В чате новый клиент участник - № 4
+Я № 1
+2022-01-08T23:44:19.599
+№ 1 : Я № 1
+2022-01-08T23:44:31.589
+№ 2 : Я № 2
+2022-01-08T23:44:39.858
+№ 3 : № 10
+2022-01-08T23:44:50.859
+№ 4 : № 11 с Вами
+Всем привет!
+2022-01-08T23:45:40.157
+№ 1 : Всем риет!
+2022-01-08T23:45:59.859
+№ 2 : Как дела?
+2022-01-08T23:46:06.959
+№ 3 : Отлично!
+2022-01-08T23:46:19.761
+№ 4 : Чат - огонь :)
+Пока :(
+2022-01-08T23:46:52.726
+№ 1 : Пока :(
+2022-01-08T23:47:04.975
+№ 4 : До встречи, Первый.
+2022-01-08T23:47:25.071
+№ 3 : Мне будет вас нехватать :(
+2022-01-08T23:47:48.024
+№ 2 : Еще увидимся на 15 ДЗ :)
+exit chat
 
  */
