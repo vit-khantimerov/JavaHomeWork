@@ -23,15 +23,15 @@ public class Client_AWT_2 {
         Frame frame = new Frame();
         Button button = new Button("Отправить");
         TextField textField = new TextField();
-        textArea.setBounds(20,50,460,300);
-        textField.setBounds(20, 400, 350, 30);
-        button.setBounds(400, 400, 80, 30);
+        textArea.setBounds(20,50,360,300);
+        textField.setBounds(20, 350, 250, 30);
+        button.setBounds(300, 350, 80, 30);
 
         frame.add(textArea);
         frame.add(button);
         frame.add(textField);
 
-        frame.setSize(500,500);
+        frame.setSize(400,400);
         frame.setTitle("Чат AWT 2");
         textArea.setForeground(Color.blue);
 
