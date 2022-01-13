@@ -1,16 +1,14 @@
 package com.pb.khantimerov.hw15;
 
-//import com.pb.khantimerov.hw14.ClientHandler;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
 public class Server15 {
-
         public static void main(String[] args) {
             Server15 server = new Server15();
         }
@@ -29,10 +27,13 @@ public class Server15 {
                     clientSocket = serverSocket.accept();
                     clNr++;
                     String clName = "№ " + clNr;
-                    ClientHandler15 client = new ClientHandler15(clientSocket, this, clName);
+                    ClientHandler15 client = new ClientHandler15(clientSocket, this, clName, clNr);
                     clients15.add(client);
                     new Thread(client).start();
-                    System.out.println(LocalDateTime.now() + ". В чате новый клиент участник - " + clName);
+                    LocalDateTime dateTime = LocalDateTime.now();
+                    DateTimeFormatter formattedDTime = DateTimeFormatter.ofPattern("dd.mm.yyyy, HH:mm:ss");
+                    System.out.println("\u001B[3" + clNr + "m" + dateTime.format(formattedDTime) +
+                            ". В чате новый участник - " + clName + "\u001B[0m");
                 }
             }
             catch (IOException ex) {
@@ -62,8 +63,3 @@ public class Server15 {
             clients15.remove(client);
         }
 }
-
-/* Сообщения на сервере.
-
-
- */
