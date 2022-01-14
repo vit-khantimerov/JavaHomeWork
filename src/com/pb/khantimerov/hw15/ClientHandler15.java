@@ -33,12 +33,6 @@ public class ClientHandler15 implements Runnable {
     public void run() {
         LocalDateTime dateTime2;// = LocalDateTime.now();
         DateTimeFormatter formattedDTime = DateTimeFormatter.ofPattern("dd.mm.yyyy, HH:mm:ss");
-//                    System.out.println(dateTime.format(formattedDTime));
-//                    System.out.println(LocalDateTime.now() + ". В чате новый участник - " + clName);
-        // Каждому клиенту со цвет на сервере (макс. 7 цветов в ДЗ)
-//        System.out.println("\u001B[3" + clNr + "m" + dateTime2.format(formattedDTime) +
-//                ". В чате новый участник - " + clName + "\u001B[0m");
-
         try {
             while (true) {
                 server.sendMessageToAllClients(LocalDateTime.now() + "\nВ чате новый участник - " + name);
@@ -49,8 +43,9 @@ public class ClientHandler15 implements Runnable {
                 if (inMessage.hasNext()) {
                     dateTime2 = LocalDateTime.now();
                     String clientMessage = inMessage.nextLine();
-                    System.out.println(new StringBuilder() // протокол сообщений на сервере разными цетами
-                            .append("\u001B[3" + clnN + "m")
+                        System.out.println(new StringBuilder()
+                        // протокол сообщений на сервере разными цетами (255 цветов, далее все клиенты белые))
+                            .append("\u001B[38;5;" + clnN + "m")
                             .append(dateTime2.format(formattedDTime))
                             .append(" :: ")
                             .append(name)
