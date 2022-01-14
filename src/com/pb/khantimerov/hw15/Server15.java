@@ -32,7 +32,8 @@ public class Server15 {
                     new Thread(client).start();
                     LocalDateTime dateTime = LocalDateTime.now();
                     DateTimeFormatter formattedDTime = DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm:ss");
-                    System.out.println("\u001B[3" + clNr + "m" + dateTime.format(formattedDTime) +
+                    // протокол подключений к серверу разными цетами (255 цветов, далее все клиенты белые)
+                    System.out.println("\u001B[38;5;" + clNr + "m" + dateTime.format(formattedDTime) +
                             ". В чате новый участник - " + clName + "\u001B[0m");
                 }
             }
